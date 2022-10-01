@@ -1,0 +1,16 @@
+train_data: '../data/processed/train_data_processed.csv'
+
+features_col_name: review_full_processed
+label_col_name: rating_review
+
+pipeline_map:
+  CountVectorizer: {}
+  TruncatedSVD:
+    n_components: 30
+  LinearRegressionRounder: {}
+  Rounder: {}
+
+
+n_folds: 4
+
+param_grid:
