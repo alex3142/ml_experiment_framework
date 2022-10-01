@@ -1,0 +1,21 @@
+train_data: '../data/processed/train_data_processed.csv'
+test_data: '../data/processed/test_data_processed.csv'
+
+features_col_name: review_full_processed
+label_col_name: rating_review
+
+
+pipeline_map:
+  TfidfVectorizer: {}
+  TruncatedSVD:
+    n_components: 30
+  RandomForestRegressorRounder:
+    min_samples_split: 0.0001
+    min_samples_leaf: 0.005
+    max_features: sqrt
+  Rounder: {}
+
+
+n_folds: 4
+
+param_grid:
