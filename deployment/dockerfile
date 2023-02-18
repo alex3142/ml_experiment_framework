@@ -1,0 +1,26 @@
+FROM python:3.8-slim
+
+EXPOSE 5000
+
+ENV PYTHONUNBUFFERED=1
+
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    software-properties-common \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --no-cache --upgrade pip setuptools
+
+RUN git clone path_to_git_repo_with_model_and_deployment_code
+
+WORKDIR name-of-repo-parent-folder
+
+RUN pip3 install -r modelling_requirements.txt
+RUN pip3 install -r deployment_requirements.txt
+
+WORKDIR deployment
+
+ENTRYPOINT [ "python" ]
+CMD ["model_endpoint.py" ]

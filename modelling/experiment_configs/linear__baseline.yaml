@@ -1,0 +1,108 @@
+########################################################
+#                      data import                     #
+########################################################
+data_file_path:
+
+train_data: train.csv
+test_data: test.csv
+
+processed_data_folder: processed
+
+data_load_kwargs:
+  index_col:
+    - plcy_no
+    - customer_no
+
+
+########################################################
+#                        data info                     #
+########################################################
+
+binarise_label: True
+
+features_col_names:
+  - payment_freq
+  - sales_channel
+  - cust_payment_type
+  - cust_city
+  - customer_age_at_policy__processed
+  - car_brand
+  - car_fuel
+  - car_catalog_value
+  - car_weight
+  - car_mileage
+  - car_acceleration
+  - car_age__processed
+
+label_col_name: freq_norm
+sample_weight_col_name: exposure
+
+########################################################
+#                    transformer info                  #
+########################################################
+
+column_transformer_map:
+  impute:
+    trans_name:
+      SimpleImputer
+    trans_args: {}
+    col_names:
+      - car_catalog_value
+      - car_weight
+      - car_mileage
+      - car_acceleration
+      - car_age__processed
+  OHE:
+    trans_name:
+      OneHotEncoder
+    trans_args:
+      drop: first
+      sparse_output: False
+    col_names:
+      - payment_freq
+      - sales_channel
+      - cust_payment_type
+      - cust_city
+      - car_brand
+      - car_fuel
+
+column_transformer_args:
+  remainder:
+    passthrough
+  sparse_threshold: 0.0
+
+
+########################################################
+#                       model info                     #
+########################################################
+
+model_pipline:
+  - type:
+      StandardScaler
+    kwargs: {}
+  - type:
+      LogisticRegression
+    kwargs:
+      penalty: l1
+      class_weight: balanced
+      random_state: 3142
+      solver: liblinear
+
+
+model_name:
+
+########################################################
+#                     general info                     #
+########################################################
+
+n_folds: 5
+
+param_grid:
+
+best_params: {}
+
+evaluate_final_model: False
+
+run_feature_selection: True
+
+

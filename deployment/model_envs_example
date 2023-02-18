@@ -1,0 +1,5 @@
+MODEL_DIR=modelling
+MODEL_LOCATION=trained_models
+MODEL_NAME=claim_prediction_model_v_1_0.pkl
+PREPROC_LOCATION=saved_preprocessors
+PREPROC_NAME=preprocessor_v_0_1.pkl
