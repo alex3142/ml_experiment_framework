@@ -1,0 +1,56 @@
+
+
+model_name: churn__log_reg__baseline.pkl
+
+features_col_names:
+  - main_operating_route
+  - tenure_years
+  - opened_campaign__processed
+  - total_expenses__processed
+  - num_loads_prev_12_mth__processed
+  - profit_prev_12_mth__processed
+
+label_col_name: churned
+
+column_transformer_map:
+  impute:
+    trans_name:
+      SimpleImputer
+    trans_args: {}
+    col_names:
+      - total_expenses__processed
+      - profit_prev_12_mth__processed
+  OHE:
+    trans_name:
+      OneHotEncoder
+    trans_args:
+      drop: first
+    col_names:
+      - main_operating_route
+
+column_transformer_args:
+  remainder:
+    passthrough
+    
+all_feature_transformers:
+    - trans_name: StandardScaler
+      trans_args: {}
+        
+feature_selection_type: lasso
+
+model:
+  type:
+    LogisticRegressionCV
+  kwargs:
+    penalty: l1
+    solver: liblinear
+    class_weight: balanced
+    scoring: roc_auc
+    random_state: 3142
+
+n_folds: 5
+
+param_grid:
+
+best_params:
+
