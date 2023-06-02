@@ -1,0 +1,6 @@
+model:
+  name:
+    forrrrrest
+  kwargs:
+    kwarg_1: 1
+    kwarg_2: 2

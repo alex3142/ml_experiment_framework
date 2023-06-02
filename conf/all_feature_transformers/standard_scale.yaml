@@ -1,0 +1,8 @@
+transformers:
+  - trans_one:
+      name: trans_1
+      kwargs:
+        kwarg_1: 1
+        kwarg_2: 2
+
+conf_name: standard_scale.yaml

@@ -60,9 +60,18 @@ Set up the environment as described above.
 
 ### Run Experiments 
 
+#### From Yaml
 Then the experiment code is designed to run as a command line tool. The repo will need to be 
 pip installed into an environment, then from the command line cd into the `modelling` folder
 and run `python run_experiment.py --config_path name_of_experiment_config_file.yaml`.
+
+#### From Hydra
+
+Using the configurations in the config directory
+```
+python hydra_example.py +column_transformers=pipeline_with_imputation experiment_name=hello
+
+```
 
 ### View Experiment Results 
 
