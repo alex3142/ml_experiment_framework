@@ -1,0 +1,7 @@
+transformers:
+    trans_one_imp:
+        - bla
+    trans_two_imp:
+        -bla
+
+conf_name: pipeline_with_imputation.yaml

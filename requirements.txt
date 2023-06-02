@@ -10,3 +10,4 @@ click
 flask
 flask-restful
 pytest
+hydra-core
