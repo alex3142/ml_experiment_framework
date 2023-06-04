@@ -3,3 +3,7 @@ params:
   - one
 
 experiment_name: ""
+
+hydra:
+  run:
+    dir: ../new_log_location/${now:%Y-%m-%d__%H-%M-%S}-${experiment_name}
