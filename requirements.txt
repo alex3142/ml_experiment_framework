@@ -3,11 +3,10 @@ scikit-learn
 matplotlib
 spacy
 spacy-lookups-data
-ipykernel
 pyyaml
 mlflow
 click
 flask
 flask-restful
-pytest
 hydra-core
+xgboost
